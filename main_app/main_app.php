@@ -17,6 +17,8 @@ if (isset($_GET['page'])){ $page = $_GET['page']; }
 		<!-- Bootstrap CSS -->
 		<link href="../assets/assets-admin/css/bootstrap.min.css" rel="stylesheet">
 		<link href="../assets/assets-admin/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+		<!-- Select2 CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 		<link href="../assets/assets-admin/css/style.css" rel="stylesheet">
 		<!-- datetimepicker -->
 		<link href="../assets/assets-admin/css/bootstrap-datepicker.css" rel="stylesheet">
@@ -74,17 +76,17 @@ if (isset($_GET['page'])){ $page = $_GET['page']; }
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<!-- Awal Menu Admin -->
-				 	<a class="nav-link" href="main_app.php?page=reg_vaksin" style="color: white">Master Peralatan</a>
-					<!-- <li class="nav-item active dropdown"> 
+				 	<a class="nav-link" href="main_app.php?page=reg_vaksin" style="color: white">Registrasi Vaksin</a>
+					<li class="nav-item active dropdown"> 
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Data Siswa</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="main_app.php?unit=seko&action=input">Data Sekolah</a>
+							<a class="dropdown-item" href="main_app.php?page=seko&action=input">Kirim Data</a>
 							<hr style="height: 2px; background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(102,102,102,1), rgba(0,0,0,0) )">
-							<a class="dropdown-item" href="main_app.php?unit=siswa&action=datagrid">Data Peserta Magang</a>
-							<a class="dropdown-item" href="main_app.php?unit=terima&action=input">Data Penerimaan</a>
-							<a class="dropdown-item" href="main_app.php?unit=nilai&action=datagrid">Data Penilaian Siswa</a>
+							<a class="dropdown-item" href="main_app.php?page=e-icv">Data E-ICV</a>
+							<a class="dropdown-item" href="main_app.php?page=terima&action=input">Data Buku ICV</a>
+							<a class="dropdown-item" href="main_app.php?page=nilai&action=datagrid">Data Penilaian Siswa</a>
 						</div>
-					</li>-->
+					</li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
 					<a class="nav-link" href="<?=$link;?>" style="color: white"><span class="glyphicon glyphicon-user" style="color: #A60000"></span>&nbsp;&nbsp;Hai Admin</a>
@@ -226,7 +228,18 @@ if (isset($_GET['page'])){ $page = $_GET['page']; }
 		<script src="../assets/assets-admin/js/bootstrap.min.js"></script>
 		<script src="../assets/assets-admin/js/jquery.dataTables.min.js"></script>
 		<script src="../assets/assets-admin/js/dataTables.bootstrap4.min.js"></script>
-
+		<!-- jQuery (wajib sebelum Select2) -->
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<!-- Select2 JS -->
+		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('.select2').select2({
+					placeholder: "-Pilih-",
+					allowClear: true
+				});
+			});
+		</script>
 		<!--<script src="../assets/js/bootstrap-datepicker.min.js"></script>-->	
 		<script> function goBack(){ window.history.back(); } </script>
 		<script>

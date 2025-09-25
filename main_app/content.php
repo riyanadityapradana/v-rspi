@@ -10,4 +10,8 @@ if ($page == "reg_vaksin"){
 if ($page == "pindah_reg_vaksin"){
   require_once("page/reg_vaksinasi/pindah_reg_vaksin.php");
 }
+
+if ($page == "e-icv"){
+  require_once("page/e-icv/e-icv.php");
+}
 ?>

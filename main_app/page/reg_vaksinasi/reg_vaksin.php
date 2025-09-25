@@ -57,6 +57,7 @@ $query = mysqli_query($config,"SELECT
 									$nm_pasien = $row['nm_pasien'];
 									$tgl_lahir = isset($row['tgl_lahir']) ? $row['tgl_lahir'] : null;
 									$no_ktp = $row['no_ktp'];
+									$no_tlp = $row['no_tlp'];
 									$tgl_registrasi = $row['tgl_registrasi'];
 
 									// Input biasa (dummy)

@@ -59,6 +59,10 @@ if (isset($_GET['page'])){ $page = $_GET['page']; }
 				height: 22px !important;
 			}
 		}
+		.dataTables_wrapper .wrapper {
+			max-height: 550px; /* Atur tinggi sesuai kebutuhan */
+			overflow-y: auto;
+		}
 		</style>
 	</head>
 	<body>
@@ -375,6 +379,7 @@ if (isset($_GET['page'])){ $page = $_GET['page']; }
 					}
 				});
 			});
+
 		</script>
 		<!-- Script Untuk Detail Pendaftaran -->
 		<script>

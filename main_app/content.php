@@ -7,4 +7,7 @@ if ($page == "beranda"){
 if ($page == "reg_vaksin"){
   require_once("page/reg_vaksinasi/reg_vaksin.php");
 }
+if ($page == "pindah_reg_vaksin"){
+  require_once("page/reg_vaksinasi/pindah_reg_vaksin.php");
+}
 ?>

@@ -17,4 +17,9 @@ if ($page == "e-icv"){
 if ($page == "upload"){
   require_once("page/e-icv/upload-berkas.php");
 }
+
+// Kirim Data
+if ($page == "kirim-data"){
+  require_once("page/whatsapp/kirim_data.php");
+}
 ?>

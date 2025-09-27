@@ -80,9 +80,9 @@ if (isset($_GET['page'])){ $page = $_GET['page']; }
 				<!-- Awal Menu Admin -->
 				 	<a class="nav-link" href="main_app.php?page=reg_vaksin" style="color: white">Registrasi Vaksin</a>
 					<li class="nav-item active dropdown"> 
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Data Siswa</a>
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Data Vaksinasi</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="main_app.php?page=seko&action=input">Kirim Data</a>
+							<a class="dropdown-item" href="main_app.php?page=kirim-data">Kirim Data</a>
 							<hr style="height: 2px; background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(102,102,102,1), rgba(0,0,0,0) )">
 							<a class="dropdown-item" href="main_app.php?page=e-icv">Data E-ICV</a>
 							<a class="dropdown-item" href="main_app.php?page=terima&action=input">Data Buku ICV</a>

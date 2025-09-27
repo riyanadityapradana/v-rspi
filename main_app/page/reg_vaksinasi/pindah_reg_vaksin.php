@@ -31,21 +31,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$insert = mysqli_query($mysqli, $insert_sql);
 	if ($insert) {
 		echo '<div class="alert alert-success">Data berhasil disimpan!</div>';
-		echo '<script>window.location.href = "../main_app.php?page=e-icv";</script>';
+		echo '<script>window.location.href = "main_app.php?page=e-icv";</script>';
 		exit;
 	} else {
 		echo '<div class="alert alert-danger">Gagal menyimpan data.</div>';
-		echo '<script>window.location.href = "../main_app.php?page=reg_periksa";</script>';
+		echo '<script>window.location.href = "main_app.php?page=reg_periksa";</script>';
 		exit;
 	}
 }
 
 ?>
-
+<br>
 <div class="container mt-4">
 	<div class="row justify-content-center">
 		<div class="col-lg-10 col-md-12">
-			<div class="card shadow-sm p-4" style="background: #dcdcdc;">
+			<div class="card shadow-sm p-4" style="background: #dbdbdb;">
 				<h4 class="mb-4" style="font-weight:600;">Form Input Data Vaksinasi Pasien</h4>
 				<form method="post" enctype="multipart/form-data">
 					<div class="row">

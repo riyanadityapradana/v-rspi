@@ -14,4 +14,7 @@ if ($page == "pindah_reg_vaksin"){
 if ($page == "e-icv"){
   require_once("page/e-icv/e-icv.php");
 }
+if ($page == "upload"){
+  require_once("page/e-icv/upload-berkas.php");
+}
 ?>

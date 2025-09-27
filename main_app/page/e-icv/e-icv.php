@@ -5,7 +5,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-12" >
+		<div class="col-sm-12" style="border-right: 1px solid #E5E5E5">
 			<div class="panel-heading">
 				<!-- <a href="?unit=pegawai&action=input" class="btn btn-outline-info btn-sm"><i class="fa fa-plus"></i>+ Tambah Data</a> -->
 			</div>
@@ -15,10 +15,10 @@
 						<thead class="thead-dark">
 							<tr>
 								<th style="text-align: center;">No.</th>
-                                        <th>Tanggal Penerbitan</th>
+                                <th>Tanggal Penerbitan</th>
 								<th>No Dokumen</th>
-                                        <th>No KTP</th>
-                                        <th>Nama Lengkap</th>
+                                <th>No KTP</th>
+                                <th>Nama Lengkap</th>
 								<th>No Telepon</th>
 								<th>Jenis Vaksin</th>
 								<th>Vaksin Dari</th>
@@ -42,13 +42,25 @@
                                         <td><?php echo $row['no_tlp'] ?></td>
                                         <td><?php echo $row['penyakit_kondisi'] ?></td>
                                         <td><?php echo $row['vaksin_dari'] ?></td>
-								<td class="center" width="170px">
+								<td class="center" width="200px">
 									<input type="hidden" id="code">
+									<span>
+										<button class="btn btn-outline-secondary btn-sm btn-edit-upload" 
+											data-toggle="modal" 
+											data-target="#modalEditUpload" 
+											data-no_dokumen="<?= htmlspecialchars($row['no_dokumen']) ?>"
+											data-nama_pasien="<?= htmlspecialchars($row['nama_pasien']) ?>"
+											data-no_identitas="<?= htmlspecialchars($row['no_identitas']) ?>"
+											data-tgl_penerbitan="<?= htmlspecialchars($row['tgl_penerbitan']) ?>"
+											style="width: 40px">
+											<img src='../assets/assets-admin/img/icons/upload.png' style="width: 20px">
+										</button>
+									</span>
 									<button class='view_data btn btn-outline-secondary btn-sm' data-toggle="modal" id="<?=$no_dokumen;?>" data-target="#mydetail" style="width: 40px"><img src='../assets/assets-admin/img/icons/preview.png' style="width: 20px"></button>
 									<span>
 										<a href="main_app.php?page=edit_e_icv&id=<?= urlencode($row['no_dokumen']); ?>"><button class="btn btn-outline-secondary btn-sm" style="width: 40px"><img src='../assets/assets-admin/img/icons/edit.png' style="width: 20px"></button></a>
 									</span>
-                                             <a data-toggle='modal' data-target="#mod_remove_<?=$row['no_dokumen']?>"><button class='btn btn-outline-secondary btn-sm' style="width: 40px"><img src='../assets/assets-admin/img/icons/hapus.png' style="width: 20px"></button></a>
+                                    <a data-toggle='modal' data-target="#mod_remove_<?=$row['no_dokumen']?>"><button class='btn btn-outline-secondary btn-sm' style="width: 40px"><img src='../assets/assets-admin/img/icons/hapus.png' style="width: 20px"></button></a>
 								</td>
 							</tr>
                                    <!-- Modal Hapus data -->
@@ -79,5 +91,68 @@
 				</div>
 			</div>
 		</div>
-		<!-- akhir modal --> 
+		<!-- akhir modal -->
+
+		<!-- Modal Edit Upload -->
+		<div class="modal fade" id="modalEditUpload" tabindex="-1" role="dialog" aria-labelledby="modalEditUploadLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="modalEditUploadLabel">Edit Data Upload</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<form id="formEditUpload" method="post" action="main_app.php?page=upload" enctype="multipart/form-data">
+						<div class="modal-body">
+							<input type="hidden" name="no_dokumen" id="edit_no_dokumen">
+							<div class="form-group">
+								<label for="edit_nama_pasien">Nama Lengkap</label>
+								<input type="text" class="form-control" id="edit_nama_pasien" name="nama_pasien" readonly>
+							</div>
+							<div class="form-group">
+								<label for="edit_no_identitas">No KTP</label>
+								<input type="text" class="form-control" id="edit_no_identitas" name="no_identitas" readonly>
+							</div>
+							<div class="form-group">
+								<label for="edit_tgl_penerbitan">Tanggal Penerbitan</label>
+								<input type="text" class="form-control" id="edit_tgl_penerbitan" name="tgl_penerbitan" readonly>
+							</div>
+							<div class="form-group">
+								<label for="up_eicv">Upload E-ICV (PDF/PNG/JPG/JPEG)</label>
+								<input type="file" class="form-control-file" id="up_eicv" name="up_eicv" accept=".pdf,.png,.jpg,.jpeg">
+							</div>
+							<div class="form-group">
+								<label for="up_form">Upload Form (PDF/PNG/JPG/JPEG)</label>
+								<input type="file" class="form-control-file" id="up_form" name="up_form" accept=".pdf,.png,.jpg,.jpeg">
+							</div>
+							<div class="form-group">
+								<label for="up_tpk">Upload TPK (PDF/PNG/JPG/JPEG)</label>
+								<input type="file" class="form-control-file" id="up_tpk" name="up_tpk" accept=".pdf,.png,.jpg,.jpeg">
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+							<button type="submit" class="btn btn-primary">Simpan</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- Akhir Modal Edit Upload -->
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.btn-edit-upload').on('click', function(){
+				var no_dokumen = $(this).data('no_dokumen');
+				var nama_pasien = $(this).data('nama_pasien');
+				var no_identitas = $(this).data('no_identitas');
+				var tgl_penerbitan = $(this).data('tgl_penerbitan');
+				$('#edit_no_dokumen').val(no_dokumen);
+				$('#edit_nama_pasien').val(nama_pasien);
+				$('#edit_no_identitas').val(no_identitas);
+				$('#edit_tgl_penerbitan').val(tgl_penerbitan);
+			});
+		});
+		</script>
 	</div>

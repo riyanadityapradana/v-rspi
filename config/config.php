@@ -26,8 +26,8 @@ if (file_exists($envPath)) {
 $server   = getenv('DB_SERVER') ?: 'localhost';
 $username = getenv('DB_USERNAME') ?: 'root';
 $password = getenv('DB_PASSWORD') ?: '';
-$database = getenv('DB_DATABASE') ?: 'sik';
-
+$database = getenv('DB_DATABASE') ?: 'sik9';
+    
 // Konfigurasi database kedua
 $server2   = getenv('DB_SERVER') ?: 'localhost';
 $username2 = getenv('DB_USERNAME2') ?: 'root';

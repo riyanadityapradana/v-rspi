@@ -13,10 +13,12 @@ if (isset($_GET['page'])){ $page = $_GET['page']; }
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
 		<meta name="author" content="">
+
 		<link rel="icon" href="../assets/assets-public/img/fotokantor/bawaslu.png">
 		<!-- Bootstrap CSS -->
 		<link href="../assets/assets-admin/css/bootstrap.min.css" rel="stylesheet">
 		<link href="../assets/assets-admin/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+		<link href="../assets/assets-admin/css/style.css" rel="stylesheet">
 		<!-- Select2 CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 		<link href="../assets/assets-admin/css/style.css" rel="stylesheet">
@@ -96,122 +98,13 @@ if (isset($_GET['page'])){ $page = $_GET['page']; }
 		</nav>
  
 		<div class="container">
-			<!-- alert -->
-			<div class="row">
-				<div class="col">
-				<?php
-					if (isset($_GET['info'])) {
-						$info=$_GET['info'];
-						if ($info=='w'){ // Validasi info w Yaitu :
-							$a1='primary';
-								if ($_SESSION['lvl']=='admin') { // Jika Login Sebagai Admin
-									$a2='Selamat datang, Anda login sebagai "Admin" di BAWASLU Kab.Tanah Laut'; // Maka menampilkan ini
-								} else if ($_SESSION['lvl']=='pengguna') {  // Jika Login Sebagai Pengguna
-									$a2='Selamat datang, Anda login sebagai "Pengguna" di BAWASLU Kab.Tanah Laut'; // Maka menampilkan ini
-								} else { // Dan Juga Jika Login Sebagai Peserta
-									$a2='Selamat datang, Anda login sebagai "Peserta Magang" di BAWASLU Kab.Tanah Laut'; // Maka menampilkan ini
-								} ?>
-								<div class="row">
-									<div class="col-md-3"></div>
-										<div class="col-md-6" align="center">
-											<div id="info" class="alert alert-<?=$a1;?>" style="box-shadow: 1px 1px 8px 2px rgba(0,0,0,0.4); display: none">
-												<strong><?=$a2;?></strong>
-											</div>
-										</div>
-								</div>
-				<?php 	} else {
-							if ($info=='s'){
-								$a1='primary';
-								$a2='Berhasil';
-							}elseif ($info=='a'){
-								$a1='success';
-								$a2='Berhasil Menambahkan Data';
-							}elseif ($info=='h'){
-								$a1='success';
-								$a2='Berhasil Mengubah Data';
-							}elseif ($info=='v'){
-								$a1='primary';
-								$a2='Transaksi Berhasil Diproses';
-							}elseif ($info=='k'){
-								$a1='warning';
-								$a2='Stok Tidak Cukup !';
-							}elseif ($info=='p'){
-								$a1='warning';
-								$a2='Maaf, Masih Ada Transaksi Yang Belum Diproses !';
-							}elseif ($info=='d'){
-								$a1='warning';
-								$a2='Data Sudah Ada !';
-							}elseif ($info=='b'){
-								$a1='warning';
-								$a2='Ukuran File Terlalu Besar !';
-							}elseif ($info=='t'){
-								$a1='warning';
-								$a2='Type File Tidak Sesuai !';
-							}elseif ($info=='z'){
-								$a1='warning';
-								$a2='Data Tidak Ditemukan !';
-							}elseif ($info=='sksalah'){
-								$a1='warning';
-								$a2='Data Jumlah Pegawai Melebihi SK !';
-							}elseif ($info=='umurkurang'){
-								$a1='warning';
-								$a2='Umur Pegawai Minimal 18 Tahun';
-							}elseif ($info=='umurlebih'){
-								$a1='warning';
-								$a2='Umur Pegawai Maksimal 60 Tahun';
-							}elseif ($info=='jumlah'){
-								$a1='warning';
-								$a2='Jumlah Pegawai Melebihi Kuota';
-							}elseif ($info=='nip'){
-								$a1='warning';
-								$a2='NIP Harus Diisi Bagi Pegawai Berstatus PNS';
-							}elseif ($info=='nip2'){
-								$a1='warning';
-								$a2='Kosongkan NIP Bagi Pegawai Berstatus Non PNS';
-							}else{
-								$a1='danger';
-								$a2='GAGAL !';
-							}
-						?>
-							<div class="row justify-content-center">
-								<div class="col-md-4" align="center">
-									<div id="info" class="alert alert-<?=$a1;?>" style="box-shadow: 1px 1px 8px 2px rgba(0,0,0,0.4); display: none">
-										<a href="#" class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-										<strong><?=$a2;?></strong>
-									</div>
-								</div>
-							</div>
-						<?php 
-						} 
-      
-					} 
-					?>
-				</div>
-			</div>
-			<!-- akhir alert -->
-
-			<div id="page-wrapper">
+			<div class="col">
+				<div id="pages">
 				<?php
 					require_once ("content.php");
 				?>
 			</div>
-
-			<!-- logout -->
-			<div id="modallogout" class="modal fade" role="dialog">
-				<div class="modal-dialog" align="center">
-					<div class="modal-content">
-						<div class="modal-body">
-							<form method="POST" action="logout.php">
-								<strong>Anda yakin ingin Logout ?&nbsp;&nbsp;</strong>
-								<input type="submit" name="logout" class="btn btn-outline-danger btn-sm" style="width: 60px" value="Ya">
-								<button type="button" class="btn btn-outline-success btn-sm" data-dismiss="modal" style="width: 60px">Batal</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Akhir logout -->
-  
+			<br>
 			<!-- Main Footer -->
 			<footer class="main-footer" style="position:fixed;bottom:0;left:0;right:0;width:100vw;background:#d9dde0;color:#00070c;z-index:9999;padding:0; height:40px; display:flex; align-items:center;">
 				<div style="overflow:hidden;white-space:nowrap;width:100vw;">
@@ -222,12 +115,11 @@ if (isset($_GET['page'])){ $page = $_GET['page']; }
 			</footer>  
 			<!-- Akhir footer-->
 		</div>
+		
 		<!-- Optional JavaScript -->
 		<script src="../assets/assets-admin/js/jquery-3.4.1.js"></script>
 		<script src="../assets/assets-admin/js/Popper.min.js"></script>
 		<script src="../assets/assets-admin/js/bootstrap.min.js"></script>
-		<script src="../assets/assets-admin/js/jquery.dataTables.min.js"></script>
-		<script src="../assets/assets-admin/js/dataTables.bootstrap4.min.js"></script>
 		<!-- jQuery (wajib sebelum Select2) -->
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<!-- Select2 JS -->
@@ -240,12 +132,18 @@ if (isset($_GET['page'])){ $page = $_GET['page']; }
 				});
 			});
 		</script>
+		<!-- DataTables JS -->
+		<script src="../assets/assets-admin/js/jquery.dataTables.min.js"></script>
+		<script src="../assets/assets-admin/js/dataTables.bootstrap4.min.js"></script>
+
 		<!--<script src="../assets/js/bootstrap-datepicker.min.js"></script>-->	
 		<script> function goBack(){ window.history.back(); } </script>
+		
 		<script>
 			$(document).ready(function(){setTimeout(function(){$("#info").fadeIn('slow');}, 0);});
 			setTimeout(function(){$("#info").fadeOut('slow');}, 3000);
 		</script>
+		
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$('#table1').DataTable({

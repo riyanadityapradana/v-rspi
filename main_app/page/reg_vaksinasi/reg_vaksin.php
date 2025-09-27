@@ -33,7 +33,7 @@ $query = mysqli_query($config,"SELECT
 			</div>
 			<div class="dataTables_wrapper table-responsive-sm" style="padding-top: 10px">
 				<div class="wrapper">
-					<table class="table table-sm table-bordered table-hover" id="table4" style="width:100%">
+					<table class="table table-sm table-bordered table-hover" id="table2" style="width:100%">
 						<thead class="thead-dark">
 							<tr>
 								<th style="text-align: center;">No.</th>
